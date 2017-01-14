@@ -1,0 +1,30 @@
+{
+  "name": "cover",
+  "version": "1.0.0",
+  "description": "music controller",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z3t0/cover.git"
+  },
+  "keywords": [
+    "music",
+    "osx",
+    "windows",
+    "linux",
+    "electron"
+  ],
+  "author": "Rafi Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/z3t0/cover/issues"
+  },
+  "homepage": "https://github.com/z3t0/cover#readme",
+  "dependencies": {
+    "cover-art": "^1.0.5",
+    "spotify-locally": "^0.2.2"
+  }
+}
