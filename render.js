@@ -5,6 +5,14 @@ ipc.send('subscribe')
 
 var song = {}
 
+ipc.on('advertising', function(event, arg) {
+	// reset
+	song = {}
+	if (arg.type == 'spotify')
+		var img = document.getElementById("cover")
+		img.src = "res/spotify.png"
+})
+
 // Update Playing Status
 ipc.on('status', function(event, arg){
 
@@ -24,7 +32,6 @@ function update() {
 			song.cover = url
 		else
 			console.log(err)
-
 
 		// var name = document.getElementById("name")
 		// name.innerHTML = song.name

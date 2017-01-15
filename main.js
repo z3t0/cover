@@ -10,6 +10,9 @@ function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({width: 150, height: 150, frame: false})
 
+	// not resizable
+	win.setResizable(false)
+
   // and load the index.html of the app.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -88,17 +91,26 @@ function update() {
 function parseStatus(data) {
 
 	var d = {}
+	msg = "status"
 
 	if (data.type == 'spotify') {
+		// advertising
+		if(data.data.track.track_resource.name == "undefined") {
+			send('advertising', {type: 'spotify'})
+			return
+		}
+
 		d.name = data.data.track.track_resource.name
 		d.artist = data.data.track.artist_resource.name
 	}
 
-	// Send
-	for (var i = 0; i < senders.length; i++) {
-		senders[i].send('status', d)
-	}
+	send(msg, d)
+}
 
+function send(msg, data) {
+	for (var i = 0; i < senders.length; i++) {
+		senders[i].send(msg, data)
+	}
 }
 
 setInterval(function(){
